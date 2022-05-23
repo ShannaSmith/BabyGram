@@ -18,14 +18,14 @@ function signup(req, res) {
   //////////////////////////////////////////////////////////////////////////////////
   //////////////////////////////////////////////////////////////////////////////////
 
-  // FilePath unique name to be saved to our butckt
+  // FilePath unique name to be saved to our bucket
   const filePath = `${uuidv4()}/${req.file.originalname}`;
   const params = {
     Bucket: process.env.BUCKET_NAME,
     Key: filePath,
     Body: req.file.buffer,
   };
-  //your bucket name goes where collectorcat is
+  //
   //////////////////////////////////////////////////////////////////////////////////
   s3.upload(params, async function (err, data) {
     console.log(data, "from aws"); // data.Location is our photoUrl that exists on aws

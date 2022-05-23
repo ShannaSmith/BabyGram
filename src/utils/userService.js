@@ -2,13 +2,13 @@ import tokenService from "./tokenService";
 
 const BASE_URL = "/api/users/";
 
-// NOTE THIS IS configured to send of a multi/part form request
+// NOTE THIS IS configured to send off a multi/part form request
 // aka photo
 function signup(user) {
   return (
     fetch(BASE_URL + "signup", {
       method: "POST",
-      body: user,
+      body: user, //<- no need to stringify the user data because we're not sending over json we are sending over from/data
     })
       .then((res) => {
         if (res.ok) return res.json();

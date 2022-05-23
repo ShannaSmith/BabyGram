@@ -3,12 +3,15 @@ const jwt = require("jsonwebtoken");
 const SECRET = process.env.SECRET;
 const { v4: uuidv4 } = require("uuid");
 const S3 = require("aws-sdk/clients/s3");
+const { default: PostGallery } = require("../src/components/PostGallery/PostGallery");
+const user = require("../models/user");
 const s3 = new S3(); // initialize the construcotr
 // now s3 can crud on our s3 buckets
 
 module.exports = {
   signup,
   login,
+  profile
 };
 
 function signup(req, res) {
@@ -61,6 +64,18 @@ async function login(req, res) {
   }
 }
 
+async function profile(req, res){
+  try{
+    constuser = await User.findOne({username: req.params.username})
+    if(!user) return res.status(404).json({err: 'User not found'})
+    const posts = await PostGallery.find({user: user._id}).populate("user").exec();
+    console.log(posts, 'this posts')
+    res.status(200).json({posts: posts, user: user})
+  } catch(err){
+    console.log(err)
+    res.status(400).json({err})
+  }
+}
 /*----- Helper Functions -----*/
 
 function createJWT(user) {

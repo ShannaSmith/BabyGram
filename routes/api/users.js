@@ -8,7 +8,7 @@ const upload = multer();
 router.post('/accessCode', usersCtrl.accessCode);
 
 /*---------- Protected Routes ----------*/
-router.post("/signup", upload.single("avatar"), usersCtrl.signup);
+router.post("/signup", upload.single("photo"), usersCtrl.signup);
 router.post("/login", usersCtrl.login);
 router.post('/:username', usersCtrl.profile);
 module.exports = router;

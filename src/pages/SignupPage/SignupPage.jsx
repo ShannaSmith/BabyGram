@@ -20,7 +20,7 @@ export default function SignUpPage(props) {
   async function handleSubmit(e){
     e.preventDefault()
     const formData = new FormData();
-    formData.append('avatar', selectedFile);
+    formData.append('photo', selectedFile);
     for(let fieldName in state){
       formData.append(fieldName, state[fieldName])
     }
@@ -100,7 +100,7 @@ export default function SignUpPage(props) {
          <Form.Field>
            <Form.Input
              type="file"
-             name="avatar"
+             name="photo"
              placeholder="upload Avatar"
              onChange={handleFileInput}
            />

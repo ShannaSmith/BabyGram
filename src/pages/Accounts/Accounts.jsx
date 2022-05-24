@@ -1,25 +1,40 @@
-import React from 'react'
-import { List, Image } from 'semantic-ui-react'
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { List, Image } from "semantic-ui-react";
+
+import userService from "../../utils/userService";
 
 export default function Accounts() {
-  return(
-      <>
-  <List>
-    <List.Item>
-      <Image avatar src='/images/avatar/small/rachel.png' />
-      <List.Content>
-        <List.Header as='a'>Rachel</List.Header>
-        <List.Description>
-          Last seen watching{' '}
-          <a>
-            <b>Arrested Development</b>
-          </a>{' '}
-          just now.
-        </List.Description>
-      </List.Content>
-    </List.Item>
-    </List>
-    </>
-    )
+  const [grantedUsers, setGrantedUsers] = useState([]);
+  const navigate = useNavigate();
+
+  async function getGrantedUsers() {
+    try {
+      const data = await userService.getGrantedUsers();
+      setGrantedUsers(data.map(u => u.owner));
+    } catch (err) {
+      console.log("err==>>", err);
     }
-    
+  }
+
+  useEffect(() => {
+    getGrantedUsers();
+  }, []);
+  
+  return (
+    <>
+    <h1>Account Page</h1>
+      <List>
+        {grantedUsers.map((u, i) => (
+          <List.Item onClick={() => navigate(`/profile/${u.username}`)} key={i}>
+            <Image avatar src={u.photoUrl} />
+            <List.Content>
+              <List.Header as="a">{u.username}</List.Header>
+              <List.Description>{u.bio}</List.Description>
+            </List.Content>
+          </List.Item>
+        ))}
+      </List>
+    </>
+  );
+}

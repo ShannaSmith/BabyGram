@@ -3,7 +3,11 @@ import { Navigate, Route, Routes } from "react-router-dom";
 import "./App.css";
 import SignupPage from "../SignupPage/SignupPage";
 import LoginPage from "../LoginPage/LoginPage";
+import ProfilePage from "../ProfilePage/ProfilePage";
+import FeedPage from "../FeedPage/FeedPage";
 import userService from "../../utils/userService";
+import Accounts from "../Accounts/Accounts";
+import PageHeader from "../../components/Header/Header";
 
 function App() {
   const [user, setUser] = useState(userService.getUser()); // getUser decodes our JWT token, into a javascript object
@@ -19,24 +23,27 @@ function App() {
     setUser(null);
   }
 
-  if (user) {
-    return (
-      <Routes>
-        <Route path="/" element={<h1>This is Home Page!</h1>} />
-        <Route
-          path="/login"
-          element={<LoginPage handleSignUpOrLogin={handleSignUpOrLogin} />}
-        />
-        <Route
-          path="/signup"
-          element={<SignupPage handleSignUpOrLogin={handleSignUpOrLogin} />}
-        />
-      </Routes>
+  const PrivateRoute = ({ children }) => {
+    return user ? (
+      <>
+        <PageHeader handleLogout={handleLogout} user={user} />
+        {children}
+      </>
+    ) : (
+      <Navigate to="/login" />
     );
-  }
+  };
 
   return (
     <Routes>
+      <Route
+        path="/"
+        element={
+          <PrivateRoute>
+            <h1>This is Home Page!</h1>
+          </PrivateRoute>
+        }
+      />
       <Route
         path="/login"
         element={<LoginPage handleSignUpOrLogin={handleSignUpOrLogin} />}
@@ -45,7 +52,30 @@ function App() {
         path="/signup"
         element={<SignupPage handleSignUpOrLogin={handleSignUpOrLogin} />}
       />
-      <Route path="/*" element={<Navigate to="/login" />} />
+      <Route
+        path="/profile/:username"
+        element={
+          <PrivateRoute>
+            <ProfilePage handleLogout={handleLogout} user={user} />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/feeds"
+        element={
+          <PrivateRoute>
+            <FeedPage handleLogout={handleLogout} user={user} />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/account"
+        element={
+          <PrivateRoute>
+            <Accounts handleLogout={handleLogout} user={user} />
+          </PrivateRoute>
+        }
+      />
     </Routes>
   );
 }

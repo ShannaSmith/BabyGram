@@ -22,14 +22,12 @@ export default function AddPostForm(props){
 
   function handleSubmit(e){
     e.preventDefault()
-             
     const formData = new FormData()
     formData.append('photo', selectedFile)
     formData.append('caption', state.caption)
     props.handleAddPost(formData); 
     
   }
-
 
   return (
     

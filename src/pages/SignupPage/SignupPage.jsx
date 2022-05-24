@@ -5,8 +5,6 @@ import userService from "../../utils/userService";
 import { useNavigate } from "react-router-dom";
 
 export default function SignUpPage(props) {
-  console.log('hitting signup router')
-  console.log(props)
   const navigate = useNavigate();
   const [error, setError] = useState('');
   const [state, setState] = useState({
@@ -40,7 +38,6 @@ export default function SignUpPage(props) {
     })
   }
   function handleFileInput(e){
-    console.log(e.target.files)
     setSelectedFile(e.target.files[0])
   }
   return (
@@ -83,14 +80,14 @@ export default function SignUpPage(props) {
            onChange={handleChange}
            required
          />
-         <Form.Input
+         {/* <Form.Input
            name="accessCode"
            type="password"
            placeholder="enter access code"
            value={state.accessCode}
            onChange={handleChange}
            required
-         />
+         /> */}
          <Form.TextArea
            label="bio"
            name="bio"

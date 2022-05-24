@@ -5,29 +5,29 @@ const { v4: uuidv4 } = require("uuid");
 const s3 = new S3();
 module.exports = {
   index,
-  create
+  create,
 };
 
-function create(req, res) {
-  console.log(req, file, req.body, "this is create method", req.user);
+async function create(req, res) {
   try {
-    const filePath = `${uuidv4()}/${req.file.originalname}`;
-    const params = {
-      Bucket: process.env.Bucket_Name,
-      Key: filePath,
-      Body: req.file.buffer,
-    };
-    s3.upload(params, async function (err, data) {
-      console.log(err, "from aws");
-      const post = await Post.create({
-        caption: req.body.caption,
-        user: req.user,
-        photoUrl: data.Location,
-      });
-      console.log(post);
-      await post.populate("user");
-      res.status(201).json({ post: post });
-    });
+    req.body.user = req.user;
+    if (req.file) {
+      const filePath = `${uuidv4()}/${req.file.originalname}`;
+      const params = {
+        Bucket: process.env.BUCKET_NAME,
+        Key: filePath,
+        Body: req.file.buffer,
+      };
+      // const data = await s3.upload(params);
+      const data = await new Promise((resolve, reject) => s3.upload(params, (err, data) => {
+        if (err) reject(err);
+        if (data) resolve(data);
+      }));
+      req.body.photoUrl = data.Location;
+    }
+    const post = await Post.create(req.body);
+    await post.populate("user");
+    res.status(201).json({ post });
   } catch (err) {
     console.log(err);
     res.json({ data: err });

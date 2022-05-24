@@ -46,22 +46,83 @@ function login(creds) {
     .then(({ token }) => tokenService.setToken(token));
 }
 
-function getProfile(username){
+function getProfile(username) {
   return fetch(BASE_URL + username, {
     headers: {
       Authorization: "Bearer " + tokenService.getToken(),
-    }
-  }).then(res => {
-    if(res.ok) return res.json();
-    throw new Error('Bad Credentials! CHECK THE SERVER TERMINAL!')
-  })
+    },
+  }).then((res) => {
+    if (res.ok) return res.json();
+    throw new Error("Bad Credentials! CHECK THE SERVER TERMINAL!");
+  });
 }
+
+function getAllUsers() {
+  return fetch(BASE_URL, {
+    headers: {
+      Authorization: "Bearer " + tokenService.getToken(),
+    },
+  }).then((res) => {
+    if (res.ok) return res.json();
+    throw new Error("Bad Credentials! CHECK THE SERVER TERMINAL!");
+  });
+}
+
+function getGrantedUsers() {
+  return fetch(BASE_URL + 'granted', {
+    headers: {
+      Authorization: "Bearer " + tokenService.getToken(),
+    },
+  }).then((res) => {
+    if (res.ok) return res.json();
+    throw new Error("Bad Credentials! CHECK THE SERVER TERMINAL!");
+  });
+}
+
+function grantAccess(recipientId) {
+  return fetch(BASE_URL + `grant/${recipientId}`, {
+    headers: {
+      Authorization: "Bearer " + tokenService.getToken(),
+    },
+  }).then((res) => {
+    if (res.ok) return res.json();
+    throw new Error("Bad Credentials! CHECK THE SERVER TERMINAL!");
+  });
+}
+
+function revokeAccess(recipientId) {
+  return fetch(BASE_URL + `revoke/${recipientId}`, {
+    headers: {
+      Authorization: "Bearer " + tokenService.getToken(),
+    },
+  }).then((res) => {
+    if (res.ok) return res.json();
+    throw new Error("Bad Credentials! CHECK THE SERVER TERMINAL!");
+  });
+}
+
+function getLoggedInUser(recipientId) {
+  return fetch(BASE_URL + 'me', {
+    headers: {
+      Authorization: "Bearer " + tokenService.getToken(),
+    },
+  }).then((res) => {
+    if (res.ok) return res.json();
+    throw new Error("Bad Credentials! CHECK THE SERVER TERMINAL!");
+  });
+}
+
 const userService = {
   signup,
   logout,
   login,
+  getAllUsers,
+  getProfile,
   getUser,
-  getProfile
+  grantAccess,
+  revokeAccess,
+  getGrantedUsers,
+  getLoggedInUser
 };
 
 export default userService;

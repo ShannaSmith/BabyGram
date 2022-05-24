@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 export default function SignUpPage(props) {
   console.log('hitting signup router')
-  console.log(req.body, req.file)
+  console.log(props)
   const navigate = useNavigate();
   const [error, setError] = useState('');
   const [state, setState] = useState({

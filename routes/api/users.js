@@ -5,7 +5,7 @@ const multer = require("multer");
 const { Route53RecoveryCluster } = require("aws-sdk");
 const upload = multer();
 /*---------- Public Routes ----------*/
-router.post('/accessCode', usersCtrl.accessCode);
+// router.post('/accessPage', usersCtrl.accessCode);
 
 /*---------- Protected Routes ----------*/
 router.post("/signup", upload.single("photo"), usersCtrl.signup);

@@ -30,6 +30,7 @@ export default function UserPostGallery({ user }) {
   // the component is first rendered (whenever you first view the component)
   // Component Lifecycle in react
   useEffect(() => {
+      
     getPosts();
   }, []);
 

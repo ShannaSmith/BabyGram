@@ -28,6 +28,18 @@ export default function ProfilePage() {
   }
 
   useEffect(() => {
+    async function getAllUsers() {
+      try {
+        const data = await userService.getAllUsers(username);
+        setGrantedUsers(data.grantedUsers);
+        setDeniedUsers(data.deniedUsers);
+      } catch (err) {
+        console.log("err==>>", err);
+        setError("Profile Doesn't exists, CHECK YOUR TERMINAL FOR EXPRESS!");
+      }
+    }
+
+
     getAllUsers();
   }, []);
 
@@ -72,19 +84,23 @@ export default function ProfilePage() {
       {user && <Grid.Row>
         <Grid.Column>
           <ProfileBio user={user} />
+          <br/>
+          <br/>
+          <br/>
         </Grid.Column>
       </Grid.Row>}
 
       {loggedInUser?.username === username && (
         <Grid.Row centered>
           <Grid.Row centered>
-            <h1>Granted Users</h1>
+            <Grid.Column>
+            <h2>Authorized viewer</h2>
             <div>
-              <table>
+              <table className='table'>
                 <thead>
                   <tr>
-                    <th>Username</th>
-                    <th>Revoke</th>
+                    <th className="title">Username</th>
+                    <th className="title">Revoke</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -106,16 +122,18 @@ export default function ProfilePage() {
                 </tbody>
               </table>
             </div>
+            </Grid.Column>
           </Grid.Row>
 
           <Grid.Row centered>
-            <h1>Denied Users</h1>
+            
+            <h2>Add viewer</h2>
             <div>
-              <table>
+              <table className='table'>
                 <thead>
                   <tr>
-                    <th>Username</th>
-                    <th>Grant Access</th>
+                    <th className="title">Username</th>
+                    <th className="title">Grant Access</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -123,7 +141,7 @@ export default function ProfilePage() {
                     <tr key={i}>
                       <td>{u.username}</td>
                       <td>
-                        <button
+                        <button className="btn"
                           onClick={async () => {
                             await userService.grantAccess(u._id);
                             await getAllUsers();

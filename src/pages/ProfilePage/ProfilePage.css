@@ -11,3 +11,23 @@
     background: rgb(197, 222, 205);
     color:rgb(222, 164, 126);
 }
+.title{
+    color:rgb(222, 164, 126);
+}
+/* .table{
+    padding-top: 10px;
+} */
+td{
+    padding: 10px;
+}
+th{
+    padding:30px
+}
+button{
+    background-color: rgb(197, 222, 205);
+    color:rgb(222, 164, 126);
+    border-color: rgb(197, 222, 205);
+}
+h2{
+    color: rgb(22, 164, 126);
+}

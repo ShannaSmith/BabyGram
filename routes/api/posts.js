@@ -1,7 +1,10 @@
 const express = require('express');
-const router = express.Router();
+const multer  = require('multer');
+
 const postsCtrl = require('../../controllers/posts');
-const multer  = require('multer')
+const likesCtrl = require('../../controllers/likes');
+
+const router = express.Router();
 const upload = multer(); // <- handles multipart/formdata requests(photos)
 // /*---------- Public Routes ----------*/
 
@@ -9,6 +12,10 @@ const upload = multer(); // <- handles multipart/formdata requests(photos)
 
 /*---------- Protected Routes ----------*/
 router.post('/', upload.single('photo'), postsCtrl.create);
-router.get('/', postsCtrl.index)
+router.get('/users/:userId', postsCtrl.myPosts);
+router.get('/', postsCtrl.index);
+
+router.post('/:id/likes', likesCtrl.create)
+router.delete('/:id/likes', likesCtrl.remove)
 
 module.exports = router;

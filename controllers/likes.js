@@ -8,11 +8,13 @@ module.exports = {
 async function create(req, res) {
   const { id } = req.params;
   try {
-    return Post.findByIdAndUpdate(
-      id,
-      { $push: { likes: req.user._id } },
-      { new: true }
-    );
+    const post = await Post.findByIdAndUpdate(
+        id,
+        { $push: { likes: req.user._id } },
+        { new: true }
+      )
+    ;
+    res.send(post);
   } catch (err) {
     console.log("err==>>", err);
     res.status(500).json({ data: err });
@@ -20,13 +22,14 @@ async function create(req, res) {
 }
 
 async function remove(req, res) {
-    const { id } = req.params;
+  const { id } = req.params;
   try {
-    return Post.findByIdAndUpdate(
+    const post =await Post.findByIdAndUpdate(
       id,
       { $pull: { likes: req.user._id } },
       { new: true }
     );
+    res.send(post);
   } catch (err) {
     console.log("err==>>", err);
     res.status(500).json({ data: err });

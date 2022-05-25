@@ -101,7 +101,7 @@ function revokeAccess(recipientId) {
   });
 }
 
-function getLoggedInUser(recipientId) {
+function getLoggedInUser() {
   return fetch(BASE_URL + 'me', {
     headers: {
       Authorization: "Bearer " + tokenService.getToken(),

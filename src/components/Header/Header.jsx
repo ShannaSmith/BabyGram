@@ -6,15 +6,18 @@ export default function PageHeader({ user, handleLogout }) {
   return (
     <Segment clearing>
       <Header as="h2" floated="right">
-        <Link to="/">
+        {/* <Link to="/">
           <Icon name="home"></Icon>
-        </Link>
+        </Link> */}
         <Link to="" onClick={handleLogout}>
           Logout
         </Link>
       </Header>
+
+
+
       <Header as="h2" floated="left">
-        <Link to={`/${user?.username}`}>
+        <Link to={`/profile/${user?.username}`}>
             {/* change image during styling */}
           <Image
             src={
@@ -25,6 +28,22 @@ export default function PageHeader({ user, handleLogout }) {
             avatar
           ></Image>
         </Link>
+{" "}
+        <Link to="/">
+          <Icon name="home"></Icon>
+        </Link>
+        {" "}
+        <Link to="/feeds">
+          Feeds
+        </Link>
+        {" "}
+        <Link to={`/gallery/${user?._id}`}>
+          Gallery
+        </Link> 
+        {" "}
+        <Link to={`/profile/${user.username}`}>
+          Profile
+        </Link>               
       </Header>
     </Segment>
   );

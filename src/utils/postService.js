@@ -7,6 +7,7 @@ function addLike(postid) {
     headers: {
       Authorization: "Bearer " + tokenService.getToken(),
     },
+    method: 'POST'
   }).then((res) => {
     if (res.ok) return res.json();
     throw new Error("Bad Credentials! CHECK THE SERVER TERMINAL!");
@@ -18,6 +19,7 @@ function removeLike(postid) {
     headers: {
       Authorization: "Bearer " + tokenService.getToken(),
     },
+    method: 'DELETE'
   }).then((res) => {
     if (res.ok) return res.json();
     throw new Error("Bad Credentials! CHECK THE SERVER TERMINAL!");
@@ -48,11 +50,23 @@ function create(data) {
   });
 }
 
+function getMyPosts(userId) {
+  return fetch(BASE_URL + `users/${userId}`, {
+    headers: {
+      Authorization: "Bearer " + tokenService.getToken(),
+    },
+  }).then((res) => {
+    if (res.ok) return res.json();
+    throw new Error("Bad Credentials! CHECK THE SERVER TERMINAL!");
+  });
+}
+
 const postService = {
   addLike,
   removeLike,
   getAll,
-  create
+  create,
+  getMyPosts
 };
 
 export default postService;

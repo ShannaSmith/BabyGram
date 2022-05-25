@@ -14,7 +14,6 @@ export default function PostCard({
   // we search the array of objects that is post.likes to see if the logged in users
   // id exists in that array of objects
   const userLikedPost = post.likes.some((userId) => JSON.stringify(userId) === JSON.stringify(user._id));
-console.log('in car==>>', post)
   const clickHandler = userLikedPost
     ? () => removeLike(post._id)
     : () => addLike(post._id);
@@ -32,7 +31,7 @@ console.log('in car==>>', post)
       ) : (
         <Card.Content textAlign="left">
           <Card.Header>
-            <Link to={`/${post.user.username}`}>
+            <Link to={`/gallery/${post.user._id}`}>
               <Image
                 size="large"
                 avatar

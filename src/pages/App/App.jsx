@@ -8,6 +8,7 @@ import FeedPage from "../FeedPage/FeedPage";
 import userService from "../../utils/userService";
 import Accounts from "../Accounts/Accounts";
 import PageHeader from "../../components/Header/Header";
+import UserPostGallery from "../PostGallery/PostGallery";
 
 function App() {
   const [user, setUser] = useState(userService.getUser()); // getUser decodes our JWT token, into a javascript object
@@ -56,7 +57,7 @@ function App() {
         path="/profile/:username"
         element={
           <PrivateRoute>
-            <ProfilePage handleLogout={handleLogout} user={user} />
+            <ProfilePage user={user} />
           </PrivateRoute>
         }
       />
@@ -64,7 +65,7 @@ function App() {
         path="/feeds"
         element={
           <PrivateRoute>
-            <FeedPage handleLogout={handleLogout} user={user} />
+            <FeedPage user={user} />
           </PrivateRoute>
         }
       />
@@ -72,10 +73,18 @@ function App() {
         path="/account"
         element={
           <PrivateRoute>
-            <Accounts handleLogout={handleLogout} user={user} />
+            <Accounts user={user} />
           </PrivateRoute>
         }
       />
+      <Route
+        path="/gallery/:userId"
+        element={
+          <PrivateRoute>
+            <UserPostGallery user={user} />
+          </PrivateRoute>
+        }
+      />      
     </Routes>
   );
 }

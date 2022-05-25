@@ -1,38 +1,23 @@
 import React, { useState, useEffect } from "react";
 import { Grid } from "semantic-ui-react";
+import { useParams } from "react-router-dom";
 
-import AddPostForm from "../../components/AddPostForm/AddPostForm";
 import PostGallery from "../../components/PostGallery/PostGallery";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import Loading from "../../components/Loader/Loader";
 import postsAPI from "../../utils/postService";
 
-export default function Feed({ user }) {
+
+export default function UserPostGallery({ user }) {
   const [posts, setPosts] = useState([]); // <- likes are inside of the each post in the posts array
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
-
-  // C create in Crud
-  // we invoke this function in addPost component when the submit button on our form is clicked
-  // so we need to pass it as a prop
-  async function handleAddPost(post) {
-    try {
-      setLoading(true);
-      const data = await postsAPI.create(post); // our server is going to return
-      // the created post, that will be inside of data, which is the response from
-      // the server, we then want to set it in state
-      setPosts([data.post, ...posts]);
-      setLoading(false);
-    } catch (err) {
-      console.log(err);
-      setError(err.message);
-    }
-  }
+  const { userId } = useParams();
 
   // R read in crud
   async function getPosts() {
     try {
-      const data = await postsAPI.getAll();
+      const data = await postsAPI.getMyPosts(userId);
       setPosts([...data.posts]);
       setLoading(false);
     } catch (err) {
@@ -66,7 +51,7 @@ export default function Feed({ user }) {
       console.log(err.message, " this is the error");
       setError(err.message);
     }
-  };  
+  };   
 
   if (error) {
     return (
@@ -86,29 +71,19 @@ export default function Feed({ user }) {
 
   return (
     <Grid centered>
-      <div>
-        <Grid.Row>
-          <Grid.Column style={{ maxWidth: 450 }}>
-            <AddPostForm handleAddPost={handleAddPost} />
-          </Grid.Column>
-        </Grid.Row>
-      </div>
-
-      <div>
-        <Grid.Row>
-          <Grid.Column style={{ maxWidth: 450 }}>
-            <PostGallery
-              posts={posts}
-              numPhotosCol={1}
-              isProfile={false}
-              loading={loading}
-              addLike={addLike}
-              removeLike={removeLike}
-              user={user}
-            />
-          </Grid.Column>
-        </Grid.Row>
-      </div>
+      <Grid.Row>
+        <Grid.Column style={{ maxWidth: 450 }}>
+          <PostGallery
+            posts={posts}
+            numPhotosCol={1}
+            isProfile={false}
+            loading={loading}
+            addLike={addLike}
+            removeLike={removeLike}
+            user={user}
+          />
+        </Grid.Column>
+      </Grid.Row>
     </Grid>
   );
 }

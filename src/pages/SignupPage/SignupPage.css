@@ -1,0 +1,51 @@
+*{
+    background-color: rgb(0, 159, 253);
+}
+.bio{
+    color: rgb(222, 164, 126);
+}
+
+.ui.form .field>label {
+    display: block;
+    margin: 0 0 0.28571429rem 0;
+    color: rgba(222, 164, 126, .87);
+    font-size: .92857143em;
+    font-weight: 700;
+    text-transform: none;
+    background-color: white;
+}
+/* ::selection {
+    background-color: #cce2ff;
+    color: rgb(222, 164, 126);
+} */
+input::selection, textarea::selection {
+    background-color: rgba(100,100,100,.4);
+    color: rgba(0,0,0,.87);
+}
+::selection {
+    background-color: #cce2ff;
+    color: rgba(0,0,0,.87);
+}
+#btn{
+    color:rgb(222, 164, 126) !important;
+}
+#btn:hover{
+    background-color: rgb(222, 137, 190);
+    transition:0.7s;
+}
+.ui.form input[type=file]{
+    font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
+    margin: 0;
+    outline: 0;
+    -webkit-appearance: none;
+    tap-highlight-color: rgba(255,255,255,0);
+    line-height: 1.21428571em;
+    padding: 0.67857143em 1em;
+    font-size: 1em;
+    background: white;
+    border: 1px solid rgba(34,36,38,.15);
+    color: rgba(0,0,0,.87);
+    border-radius: 0.28571429rem;
+    box-shadow: 0 0 0 0 transparent inset;
+    transition: color .1s ease,border-color .1s ease;
+}

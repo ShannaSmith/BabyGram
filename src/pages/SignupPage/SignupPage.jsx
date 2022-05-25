@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
-import { Button, Form, Grid, Header, Image, Segment } from 'semantic-ui-react'
+import { Button, Form, Grid, Header, Icon, Segment } from 'semantic-ui-react'
 import userService from "../../utils/userService";
 import { useNavigate } from "react-router-dom";
+import './SignupPage.css';
 
 export default function SignUpPage(props) {
   const navigate = useNavigate();
@@ -45,7 +46,7 @@ export default function SignUpPage(props) {
    <Grid.Column style={{ maxWidth: 450 }}>
      <Header as="h2" color="teal" textAlign="center">
        {/* change this image src during styling! */}
-       <Image src="https://i.imgur.com/s4LrnlU.png" /> Sign Up 
+       <Icon name='signup'></Icon>Sign Up 
      </Header>
      <Form autoComplete="off" onSubmit={handleSubmit}>
        <Segment stacked>
@@ -88,21 +89,22 @@ export default function SignUpPage(props) {
            onChange={handleChange}
            required
          /> */}
-         <Form.TextArea
+         <Form.TextArea id="bio"
            label="bio"
            name="bio"
            placeholder="Tell family/friends about your little one "
            onChange={handleChange}
          />
          <Form.Field>
-           <Form.Input
+         
+           <Form.Input 
              type="file"
              name="photo"
              placeholder="upload Avatar"
              onChange={handleFileInput}
            />
          </Form.Field>
-         <Button type="submit" className="btn">
+         <Button basic color="pink item" type="submit" className="btn">
            Signup
          </Button>
        </Segment>

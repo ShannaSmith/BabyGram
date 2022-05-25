@@ -4,7 +4,7 @@ import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import userService from "../../utils/userService";
 import { useNavigate, Link } from "react-router-dom";
 import {
-  Button, Form, Grid, Header, Image, Message, Segment,
+  Button, Form, Grid, Header, Message, Segment, Icon,
 } from "semantic-ui-react";
 export default function LoginPage(props) {
   const [error, setError] = useState("");
@@ -40,8 +40,7 @@ export default function LoginPage(props) {
       >
       <Grid.Column style={{ maxWidth: 450 }}>
           <Header as="h2" color="teal" textAlign="center">
-            {/* change this image during styling */}
-            <Image src="https://i.imgur.com/s4LrnlU.png" /> Log-in to your
+            <Icon  style={{ margin: '20px' }}name='sign-in' > </Icon >Log-in to your
             account
           </Header>
           <Form autoComplete="off" onSubmit={handleSubmit}>
@@ -73,8 +72,8 @@ export default function LoginPage(props) {
               </Button>
             </Segment>
           </Form>
-          <Message>
-            New to us? <Link to="/signup">Sign Up</Link>
+          <Message color='rgb(222,164,126)'>
+            New to us? <Icon name='signup'></Icon><Link to="/signup">Sign Up</Link>
           </Message>
           {error ? <ErrorMessage error={error} /> : null}
         </Grid.Column>

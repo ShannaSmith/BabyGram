@@ -1,6 +1,7 @@
 
 .bio{
     color: rgb(222, 164, 126);
+    
 }
 
 .ui.form .field>label {
@@ -46,4 +47,8 @@ input::selection, textarea::selection {
     border-radius: 0.28571429rem;
     box-shadow: 0 0 0 0 transparent inset;
     transition: color .1s ease,border-color .1s ease;
+}
+#bio{
+    background: white !important;
+    color:rgb(222, 164, 126);
 }

@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-//A Post has many likes, a like belongs to an Post
+//A AccessCode has one owner, a Access Code belongs to a owner
 const accessCodeSchema = new mongoose.Schema({
   owner: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
   recipient: { type: mongoose.Schema.Types.ObjectId, ref: "User" },

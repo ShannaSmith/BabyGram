@@ -41,7 +41,7 @@ function App() {
         path="/"
         element={
           <PrivateRoute>
-            <h1>This is Home Page!</h1>
+             <Navigate to={`/profile/${user.username}`} />
           </PrivateRoute>
         }
       />

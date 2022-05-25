@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Grid } from "semantic-ui-react";
-
+import './Feed.css'
 import AddPostForm from "../../components/AddPostForm/AddPostForm";
 import PostGallery from "../../components/PostGallery/PostGallery";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";

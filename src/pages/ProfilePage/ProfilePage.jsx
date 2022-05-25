@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Grid } from "semantic-ui-react";
-
+import './ProfilePage.css'
 import userService from "../../utils/userService";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import ProfileBio from "../../components/ProfileBio/ProfileBio";

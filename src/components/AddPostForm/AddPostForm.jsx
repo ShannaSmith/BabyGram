@@ -41,7 +41,7 @@ export default function AddPostForm(props){
                   className="form-control"
                   name="caption"
                   value={state.caption}
-                  placeholder="What's on your pups mind?"
+                  placeholder="Your tag line"
                   onChange={handleChange}
                   required
               />   
@@ -56,7 +56,7 @@ export default function AddPostForm(props){
                 type="submit"
                 className="btn"
               >
-                ADD PUPPY
+                Add Image
               </Button>
             </Form>
           </Segment>

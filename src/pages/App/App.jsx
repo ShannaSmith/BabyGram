@@ -24,6 +24,7 @@ function App() {
     setUser(null);
   navigate('/login');
   }
+  
 
   const PrivateRoute = ({ children }) => {
     return user ? (
@@ -35,6 +36,7 @@ function App() {
       <Navigate to="/login" />
     );
   };
+  
 
   return (
     <Routes>

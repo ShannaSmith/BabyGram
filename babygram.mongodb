@@ -5,7 +5,7 @@
 const database = 'babygram';
 const collection = 'babies';
 // Create a new database
-use(datbase);
+use(database);
 //Creat a new collection
 db.createCollection(collection);
 // The drop() command destroys all data from a collection.

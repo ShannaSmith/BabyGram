@@ -27,18 +27,21 @@ export default function Accounts({ user, handleLogout }) {
     
          
           <Header as="h1" color="teal" textAlign="center"> Account Page</Header>
-    
+    <Grid.Row float="left">
+      <Grid.Column>
       <List>
         {grantedUsers.map((u, i) => (
           <List.Item onClick={() => navigate(`/profile/${u.username}`)} key={i}>
             <Image avatar src={u.photoUrl} />
             <List.Content>
-              <List.Header as="a">{u.username}</List.Header>
-              <List.Description>{u.bio}</List.Description>
+              <List.Header className="accountName" as="a">{u.username}</List.Header>
+              <List.Description className="accountTag">{u.bio}</List.Description>
             </List.Content>
           </List.Item>
         ))}
       </List>
+      </Grid.Column>
+      </Grid.Row>
       </Grid>
     </>
   );

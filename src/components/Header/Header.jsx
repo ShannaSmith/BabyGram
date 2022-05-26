@@ -29,7 +29,7 @@ export default function PageHeader({ user, handleLogout }) {
         </Link>
         
         <Link className="navBarLink" to="/feeds">
-          Feeds
+          Feed
         </Link>
         
         <Link className="navBarLink" to={`/gallery/${user?._id}`}>
@@ -38,7 +38,11 @@ export default function PageHeader({ user, handleLogout }) {
        
         <Link className="navBarLink" to={`/profile/${user.username}`}>
           Profile
-        </Link>               
+        </Link>  
+        
+        <Link className="navBarLink" to={`/account/${user.username}`}>
+          Accounts
+        </Link>             
       </Header>
     </Segment>
   );

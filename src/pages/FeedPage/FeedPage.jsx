@@ -6,8 +6,8 @@ import PostGallery from "../../components/PostGallery/PostGallery";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import Loading from "../../components/Loader/Loader";
 import postsAPI from "../../utils/postService";
-
-export default function Feed({ user }) {
+import PageHeader from "../../components/Header/Header";
+export default function Feed({ user, handleLogout }) {
   const [posts, setPosts] = useState([]); // <- likes are inside of the each post in the posts array
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
@@ -79,6 +79,7 @@ export default function Feed({ user }) {
   if (loading) {
     return (
       <>
+      <PageHeader  handleLogout={handleLogout} user={user}/>
         <Loading />
       </>
     );
@@ -86,6 +87,11 @@ export default function Feed({ user }) {
 
   return (
     <Grid centered>
+       <Grid.Row>
+          <Grid.Column>
+          <PageHeader  handleLogout={handleLogout} user={user}/>
+          </Grid.Column>
+        </Grid.Row>
       <div>
         <Grid.Row>
           <Grid.Column style={{ maxWidth: 450 }}>

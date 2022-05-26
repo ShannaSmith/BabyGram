@@ -52,3 +52,7 @@ input::selection, textarea::selection {
     background: white !important;
     color:rgb(222, 164, 126);
 }
+.ui.teal.header {
+    color: rgb(222, 164, 126)!important;
+}
+

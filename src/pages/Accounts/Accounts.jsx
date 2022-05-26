@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { List, Image } from "semantic-ui-react";
-
+import { List, Image, Grid } from "semantic-ui-react";
+import PageHeader from "../../components/Header/Header";
 import userService from "../../utils/userService";
 
-export default function Accounts() {
+export default function Accounts({ user, handleLogout }) {
   const [grantedUsers, setGrantedUsers] = useState([]);
   const navigate = useNavigate();
 
@@ -23,6 +23,13 @@ export default function Accounts() {
   
   return (
     <>
+    <Grid centered>
+     <Grid.Row>
+          <Grid.Column>
+          <PageHeader  handleLogout={handleLogout} user={user}/>
+          </Grid.Column>
+          </Grid.Row>
+          </Grid>
     <h1>Account Page</h1>
       <List>
         {grantedUsers.map((u, i) => (

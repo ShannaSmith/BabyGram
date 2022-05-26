@@ -39,7 +39,7 @@ function App() {
     <Routes>
       <Route
         path="/"
-        element={<FeedPage user={user} handleLogout={handleLogout} />}
+        element={<SignupPage user={user} handleLogout={handleLogout} />}
       />
       <Route
         path="/login"
@@ -66,7 +66,7 @@ function App() {
         }
       />
       <Route
-        path="/account"
+        path="users/account"
         element={
           <PrivateRoute>
             <Accounts user={user} />
@@ -80,7 +80,8 @@ function App() {
             <UserPostGallery user={user} />
           </PrivateRoute>
         }
-      />      
+      />     
+       <Route path="/*" element={<Navigate to="/login" />} /> 
     </Routes>
   );
 }

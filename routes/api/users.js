@@ -16,4 +16,5 @@ router.get('/granted', usersCtrl.grantedUsers);
 router.get('/grant/:userId', usersCtrl.grantAccess);
 router.get('/revoke/:userId', usersCtrl.revokeAccess);
 router.get('/:username', usersCtrl.profile);
+router.get('/account/:username')
 module.exports = router;

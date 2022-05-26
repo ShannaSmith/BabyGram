@@ -39,11 +39,7 @@ function App() {
     <Routes>
       <Route
         path="/"
-        element={
-          <PrivateRoute>
-             <ProfilePage user={user} />
-          </PrivateRoute>
-        }
+        element={<FeedPage user={user} handleLogout={handleLogout} />}
       />
       <Route
         path="/login"

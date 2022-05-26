@@ -41,7 +41,7 @@ export default function AddPostForm(props){
                   className="form-control"
                   name="caption"
                   value={state.caption}
-                  placeholder="Your tag line"
+                  placeholder="Post tag line"
                   onChange={handleChange}
                   required
               />   

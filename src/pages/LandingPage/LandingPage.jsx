@@ -1,6 +1,10 @@
 /* eslint-disable max-classes-per-file */
 /* eslint-disable react/no-multi-comp */
-
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import './ProfilePage.css'
+import userService from "../../utils/userService";
+import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import { createMedia } from '@artsy/fresnel'
 import PropTypes from 'prop-types'
 import React, { Component } from 'react'

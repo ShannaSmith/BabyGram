@@ -7,6 +7,7 @@ const upload = multer();
 // router.post('/accessPage', usersCtrl.accessCode);
 router.post("/signup", upload.single("photo"), usersCtrl.signup);
 router.post("/login", usersCtrl.login);
+
 /*---------- Protected Routes ----------*/
 
 router.get('/', usersCtrl.allUsers);

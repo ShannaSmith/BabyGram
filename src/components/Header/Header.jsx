@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Header, Segment, Image, Icon } from "semantic-ui-react";
-
+import "./Header.css";
 export default function PageHeader({ user, handleLogout }) {
   return (
     <Segment clearing>
@@ -17,7 +17,7 @@ export default function PageHeader({ user, handleLogout }) {
 
 
       <Header as="h2" floated="left">
-        <Link to={`/profile/${user?.username}`}>
+        <Link className="navBarLink" to={`/profile/${user?.username}`}>
           <Image
             src={
               user?.photoUrl
@@ -27,20 +27,16 @@ export default function PageHeader({ user, handleLogout }) {
             avatar
           ></Image>
         </Link>
-          {" "}
         
-        <Link to="/feeds">
+        <Link className="navBarLink" to="/feeds">
           Feeds
         </Link>
-        {" "}
-        {" "}
-    
-        <Link to={`/gallery/${user?._id}`}>
+        
+        <Link className="navBarLink" to={`/gallery/${user?._id}`}>
           Gallery
         </Link> 
-        {" "}
-        {" "}
-        <Link to={`/profile/${user.username}`}>
+       
+        <Link className="navBarLink" to={`/profile/${user.username}`}>
           Profile
         </Link>               
       </Header>

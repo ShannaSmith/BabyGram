@@ -79,7 +79,7 @@ export default function Feed({ user, handleLogout }) {
   if (loading) {
     return (
       <>
-      <PageHeader  handleLogout={handleLogout} user={user}/>
+      {/* <PageHeader  handleLogout={handleLogout} user={user}/> */}
         <Loading />
       </>
     );
@@ -87,8 +87,8 @@ export default function Feed({ user, handleLogout }) {
 
   return (
     <Grid centered>
-       <Grid.Row>
-          <Grid.Column>
+       <Grid.Row> 
+           <Grid.Column>
           <PageHeader  handleLogout={handleLogout} user={user}/>
           </Grid.Column>
         </Grid.Row>

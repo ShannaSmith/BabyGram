@@ -28,9 +28,9 @@ export default function PageHeader({ user, handleLogout }) {
           ></Image>
         </Link>
         
-        <Link className="navBarLink" to="/feeds">
+        {/* <Link className="navBarLink" to="/feeds">
           Feed
-        </Link>
+        </Link> */}
         
         <Link className="navBarLink" to={`/gallery/${user?._id}`}>
           Gallery

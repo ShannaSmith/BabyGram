@@ -18,6 +18,7 @@ module.exports = {
   revokeAccess,
   grantedUsers,
   getLoggedInUser
+  
 };
 
 async function signup(req, res) {
@@ -141,6 +142,8 @@ function getLoggedInUser(req, res) {
     res.status(400).json({ err });
   }
 }
+
+  
 /*----- Helper Functions -----*/
 
 function createJWT(user) {

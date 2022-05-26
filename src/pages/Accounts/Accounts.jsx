@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { List, Image, Grid } from "semantic-ui-react";
+import { List, Image, Grid, Header } from "semantic-ui-react";
 import PageHeader from "../../components/Header/Header";
 import userService from "../../utils/userService";
 
@@ -24,13 +24,10 @@ export default function Accounts({ user, handleLogout }) {
   return (
     <>
     <Grid centered>
-     <Grid.Row>
-          <Grid.Column>
-          <PageHeader  handleLogout={handleLogout} user={user}/>
-          </Grid.Column>
-          </Grid.Row>
-          </Grid>
-    <h1>Account Page</h1>
+    
+         
+          <Header as="h1" color="teal" textAlign="center"> Account Page</Header>
+    
       <List>
         {grantedUsers.map((u, i) => (
           <List.Item onClick={() => navigate(`/profile/${u.username}`)} key={i}>
@@ -42,6 +39,7 @@ export default function Accounts({ user, handleLogout }) {
           </List.Item>
         ))}
       </List>
+      </Grid>
     </>
   );
 }

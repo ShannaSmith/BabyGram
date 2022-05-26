@@ -1,7 +1,7 @@
 const Post = require("../models/post");
 const S3 = require("aws-sdk/clients/s3");
 const { v4: uuidv4 } = require("uuid");
-
+const AccessCode = require("../models/accessCode");
 const s3 = new S3();
 module.exports = {
   index,
@@ -36,16 +36,32 @@ async function create(req, res) {
     res.json({ data: err });
   }
 }
-
 async function index(req, res) {
   try {
-    const posts = await Post.find({}).populate("user").exec();
+    const { _id } = req.user;
+    const grantedUsers = await AccessCode.find({recipient: _id })
+    let grantedUser_ids = grantedUsers.map(elem=>elem.owner); 
+    grantedUser_ids = [...grantedUser_ids, _id];
+    const posts = await Post.find( { user : { $in : grantedUser_ids } } ).populate("user").exec();
     res.status(200).json({ posts });
   } catch (err) {
     console.log(err);
     res.json({ data: err });
   }
 }
+
+
+// async function index(req, res) {
+//   try {
+//     const { _id } = req.user;
+//     const grantedUsers = await AccessCode.find({recipient: _id })
+//     const posts = await Post.find({}).populate("user").exec();
+//     res.status(200).json({ posts });
+//   } catch (err) {
+//     console.log(err);
+//     res.json({ data: err });
+//   }
+// }
 
 async function myPosts(req, res) {
   try {

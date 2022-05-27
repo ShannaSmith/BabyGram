@@ -45,7 +45,7 @@ export default function SignUpPage(props) {
     <Grid textAlign="center" style={{ height: "100vh" }} verticalAlign="middle">
    <Grid.Column style={{ maxWidth: 450 }}>
    <Header as="h1" color="teal" textAlign="center">Babygram</Header>
-   <span> Confidently Share posts of your bundle of joy
+   <span className="description"> Confidently Share posts of your bundle of joy
         with family and friends.</span>
      <Header as="h2" color="teal" textAlign="center">
        

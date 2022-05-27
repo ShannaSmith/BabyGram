@@ -55,4 +55,7 @@ input::selection, textarea::selection {
 .ui.teal.header {
     color: rgb(222, 164, 126)!important;
 }
+.description{
+    color:rgb(222, 164, 126);
+}
 

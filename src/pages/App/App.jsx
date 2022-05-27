@@ -1,49 +1,29 @@
-import React, { useState } from "react";
-import { Navigate,  useNavigate, Route, Routes } from "react-router-dom";
-import "./App.css";
-import SignupPage from "../SignupPage/SignupPage";
-import LoginPage from "../LoginPage/LoginPage";
-import ProfilePage from "../ProfilePage/ProfilePage";
-import FeedPage from "../FeedPage/FeedPage";
-import userService from "../../utils/userService";
-import Accounts from "../Accounts/Accounts";
-import PageHeader from "../../components/Header/Header";
-import UserPostGallery from "../PostGallery/PostGallery";
+import React, { useState} from 'react';
+import { Route, Routes, Navigate } from 'react-router-dom';
+import './App.css';
+import SignupPage from '../SignupPage/SignupPage';
+import LoginPage from '../LoginPage/LoginPage';
+import userService from '../../utils/userService';
+import FeedPage from '../FeedPage/FeedPage'; 
+import ProfilePage from '../ProfilePage/ProfilePage';
+
 
 function App() {
-  const [user, setUser] = useState({}); // getUser decodes our JWT token, into a javascript object
-  // this object corresponds to the jwt payload which is defined in the server signup or login function that looks like
-  // this  const token = createJWT(user); // where user was the document we created from mongo
-  const navigate = useNavigate();
-  function handleSignUpOrLogin() {
-    setUser(userService.getUser()); // getting the user from localstorage decoding the jwt
+  const [user, setUser] = useState(userService.getUser())
+
+  function handleSignUpOrLogin(){
+    setUser(userService.getUser())
   }
 
   function handleLogout() {
     userService.logout();
     setUser(null);
-  navigate('/login');
   }
-  
 
-  const PrivateRoute = ({ children }) => {
-    return user ? (
-      <>
-        <PageHeader handleLogout={handleLogout} user={user} />
-        {children}
-      </>
-    ) : (
-      <Navigate to="/login" />
-    );
-  };
-  
-
-  return (
+  if(!user) { // are we logged in?
+    return (
     <Routes>
-      <Route
-        path="/"
-        element={<FeedPage user={user} handleLogout={handleLogout} />}
-      />
+      
       <Route
         path="/login"
         element={<LoginPage handleSignUpOrLogin={handleSignUpOrLogin} />}
@@ -52,41 +32,22 @@ function App() {
         path="/signup"
         element={<SignupPage handleSignUpOrLogin={handleSignUpOrLogin} />}
       />
+    </Routes>
+    )
+  }
+  else{
+  return (
+    <Routes>
       <Route
-        path="/profile/:username"
-        element={
-          <PrivateRoute>
-            <ProfilePage user={user} />
-          </PrivateRoute>
-        }
+        path="/"
+        element={<FeedPage user={user} handleLogout={handleLogout} />}
       />
-      <Route
-        path="/feeds"
-        element={
-          <PrivateRoute>
-            <FeedPage user={user} />
-          </PrivateRoute>
-        }
-      />
-      <Route
-        path="/account/:username"
-        element={
-          <PrivateRoute>
-            <Accounts user={user} />
-          </PrivateRoute>
-        }
-      />
-      <Route
-        path="/gallery/:userId"
-        element={
-          <PrivateRoute>
-            <UserPostGallery user={user} />
-          </PrivateRoute>
-        }
-      />     
-       <Route path="/*" element={<Navigate to="/login" />} /> 
+      <Route path="/:username" element={<ProfilePage user={user} handleLogout={handleLogout}  />} />
+
     </Routes>
   );
 }
+}
+
 
 export default App;

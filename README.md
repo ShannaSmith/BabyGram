@@ -1,37 +1,53 @@
-## Setup 
+# BabyGram:
+### Try BabyGram  Today!
 
-1. Clone the repo
-2. Rename the folder to your Project, you can use the `mv` command like `mv mern-boilerplate yourprojectname`
-3. Delete the `.git` file, when you are in the root of the file, you can press `ls` and you should see a `.git` file, then go ahead and run `rm -rf .git`
+<br>
+
+- BabyGram [Deployed Link] (https://babygrams.herokuapp.com/) 
+
+<br>
 
 
-#### Setup your git repo
-
-1. go to github and create your github and create a repo (Without a readme or liscense you can add that later!)
-2. Then you can run the following commands in the root of your project 
-
-```
-git init
-git add .
-git commit -m "first commit"
-git remote add origin git@git.generalassemb.ly:SEI-CC/test.git // this will be whatever your address will be, look at the address in the code github gives you!
-git push -u origin main
-```
-
-#### Setup the App
-
-```npm install```
-
-*DOTENV*
-
-`touch .env`
-
-add your variables
-
-```
-DATABASE_URL=mongodb://localhost:27017/testagramV2
-BUCKET_NAME=catcollectorone
-SECRET=mysecretforjwt
-```
-
-The app is configured, to use those respective key names for the database, jwt secret and aws bucket, of course you'll have your own values
+<p>This mobile responsive application is meant to provide a platform that allows users to share precious moments with friends and family, by  uploading images while maintaining control over who can and can not view these shared memories.
+  
+  <p>This project is a MERN full-stack web application utilizing moblie first responsive design. It allows you to create a profile, complete with avatar and bio. You can view all your post in your gallery. You can give and revoke access to the images in your gallery with the click of a button. The account page allows you to view all the users that have given you access to view their gallery while also providing a link to their profile page. The Feed page displays all the images from your accessible users.
+    
+    ##ERD
+    ![ERD](https://i.imgur.com/RgTbFEH.png)
+    
+    ##Screenshots:
+    
+   ![login Page](https://i.imgur.com/z5waGQP.png)
+    
+    ![Signup Page](https://i.imgur.com/HX95A0d.png)
+    
+    ![Profile Page](https://i.imgur.com/zTAeuM8.png)
+    
+    <br>
+    
+    ## User Stories | ERD Diagram | Wireframes 
+    
+    -  [Trello Board](https://trello.com/b/mGtXskn0/baby-gram)  
+    
+    <br>
+    
+    #### Technologies used:
+    > React
+    > MongoDB
+    > Express
+    > Node.js
+    > CSS
+    > AWS S3
+    > HTML
+    > Javascript
+    > Figma
+    > Semantic UI
+    > Atlas Mongdb
+    > Heroku
+    
+    #### Planned Next Steps:
+    
+    - Add email inviation to gain access to users' gallery
+    - Add the ability to upload short videos
+    - Add an About section
+    - Add the ability to edit Bios and avatars

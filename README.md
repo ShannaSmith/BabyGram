@@ -13,7 +13,7 @@
   
   ## 🎯 Objective 
   
-  <p>This project is a MERN full-stack web application from models - controllers, using Model-View-Controller (MVC) organization utilizing moblie first responsive design. Authentication is acheived by implementing JSON Web Token (JWT) token based authentication. Authorization is implemented by restricting  create, update, delete (CUD) functionialty to authenticated users. The navigation responds to the login status of the user.
+  <p>This project is a MERN full-stack web application from models - controllers, using Model-View-Controller (MVC) organization utilizing moblie first responsive design. Authentication is acheived by implementing JSON Web Token (JWT) token based authentication. Authorization is implemented by restricting  create, read, update, delete (CRUD) functionialty to authenticated users. The navigation responds to the login status of the user.
     
 
 ## Screenshots:

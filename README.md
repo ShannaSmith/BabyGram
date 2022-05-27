@@ -1,6 +1,6 @@
 # BabyGram:
 
-### Try BabyGram  Today!
+
 
 <br>
 

@@ -21,7 +21,7 @@
  ## Getting Started
     
  👀 [view BabyGram project planning](https://trello.com/b/mGtXskn0/baby-gram)  ⬅️ Warning: clicking this link will redirect you to Trello.com
- ## BabyGram  🖱️ [Deployed Link](https://babygrams.herokuapp.com/) 
+ ## BabyGram  🖱️ [Visit Web Application](https://babygrams.herokuapp.com/) 
     
  <br>
     

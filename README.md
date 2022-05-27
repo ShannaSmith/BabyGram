@@ -18,15 +18,15 @@
     ## ERD
     <br>
     
-    ![ERD](https://i.imgur.com/RgTbFEH.png)
+   ![ERD](https://i.imgur.com/RgTbFEH.png)
     
     ##Screenshots:
     
    ![login Page](https://i.imgur.com/z5waGQP.png)
     
-    ![Signup Page](https://i.imgur.com/HX95A0d.png)
+   ![Signup Page](https://i.imgur.com/HX95A0d.png)
     
-    ![Profile Page](https://i.imgur.com/zTAeuM8.png)
+   ![Profile Page](https://i.imgur.com/zTAeuM8.png)
     
     <br>
     

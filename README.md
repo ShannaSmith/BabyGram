@@ -4,7 +4,7 @@
 
 <br>
 
-- BabyGram  🖱️ [Deployed Link] (https://babygrams.herokuapp.com/) 
+- BabyGram  🖱️ [Deployed Link](https://babygrams.herokuapp.com/) 
 
 
 

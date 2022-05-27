@@ -26,7 +26,7 @@
  <br>
     
  # 💾 Technologies Used
- <h3 align="center">React| MongoDB | Express | Node.js | CSS | AWS S3 | HTML | JavaSCript | Atlas MongoDB | Semantic UI | Heroku | Figma |</h3>
+ <h3 align="center">React| MongoDB | Express | Node.js | CSS | AWS S3 | HTML | JavaSCript | Atlas MongoDB | Semantic UI | Multer | Heroku | Figma |</h3>
    
     
  ## ⏭️ Next Steps 

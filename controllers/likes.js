@@ -16,7 +16,6 @@ async function create(req, res) {
     ;
     res.send(post);
   } catch (err) {
-    console.log("err==>>", err);
     res.status(500).json({ data: err });
   }
 }
@@ -31,7 +30,6 @@ async function remove(req, res) {
     );
     res.send(post);
   } catch (err) {
-    console.log("err==>>", err);
     res.status(500).json({ data: err });
   }
 }

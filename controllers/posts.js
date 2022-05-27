@@ -32,7 +32,6 @@ async function create(req, res) {
     await post.populate("user");
     res.status(201).json({ post });
   } catch (err) {
-    console.log(err);
     res.json({ data: err });
   }
 }
@@ -45,23 +44,9 @@ async function index(req, res) {
     const posts = await Post.find( { user : { $in : grantedUser_ids } } ).populate("user").exec();
     res.status(200).json({ posts });
   } catch (err) {
-    console.log(err);
     res.json({ data: err });
   }
 }
-
-
-// async function index(req, res) {
-//   try {
-//     const { _id } = req.user;
-//     const grantedUsers = await AccessCode.find({recipient: _id })
-//     const posts = await Post.find({}).populate("user").exec();
-//     res.status(200).json({ posts });
-//   } catch (err) {
-//     console.log(err);
-//     res.json({ data: err });
-//   }
-// }
 
 async function myPosts(req, res) {
   try {
@@ -69,7 +54,6 @@ async function myPosts(req, res) {
     const posts = await Post.find({ user: userId }).populate("user").exec();
     res.status(200).json({ posts });
   } catch (err) {
-    console.log(err);
     res.json({ data: err });
   }
 }

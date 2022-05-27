@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { List, Image, Grid, Header } from "semantic-ui-react";
-import PageHeader from "../../components/Header/Header";
 import userService from "../../utils/userService";
 
-export default function Accounts({ user, handleLogout }) {
+export default function Accounts() {
   const [grantedUsers, setGrantedUsers] = useState([]);
   const navigate = useNavigate();
 
@@ -13,7 +12,6 @@ export default function Accounts({ user, handleLogout }) {
       const data = await userService.getGrantedUsers();
       setGrantedUsers(data.map(u => u.owner));
     } catch (err) {
-      console.log("err==>>", err);
     }
   }
 

@@ -6,8 +6,8 @@ import PostGallery from "../../components/PostGallery/PostGallery";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import Loading from "../../components/Loader/Loader";
 import postsAPI from "../../utils/postService";
-import PageHeader from "../../components/Header/Header";
-export default function Feed({ user, handleLogout }) {
+
+export default function Feed({ user }) {
   const [posts, setPosts] = useState([]); // <- likes are inside of the each post in the posts array
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
@@ -24,7 +24,6 @@ export default function Feed({ user, handleLogout }) {
       setPosts([data.post, ...posts]);
       setLoading(false);
     } catch (err) {
-      console.log(err);
       setError(err.message);
     }
   }
@@ -36,7 +35,6 @@ export default function Feed({ user, handleLogout }) {
       setPosts([...data.posts]);
       setLoading(false);
     } catch (err) {
-      console.log(err.message, " this is the error");
       setError(err.message);
     }
   }
@@ -53,7 +51,6 @@ export default function Feed({ user, handleLogout }) {
       await postsAPI.addLike(postId);
       await getPosts();
     } catch (err) {
-      console.log(err.message, " this is the error");
       setError(err.message);
     }
   };
@@ -63,7 +60,6 @@ export default function Feed({ user, handleLogout }) {
       await postsAPI.removeLike(postId);
       await getPosts();
     } catch (err) {
-      console.log(err.message, " this is the error");
       setError(err.message);
     }
   };  
@@ -79,7 +75,7 @@ export default function Feed({ user, handleLogout }) {
   if (loading) {
     return (
       <>
-      {/* <PageHeader  handleLogout={handleLogout} user={user}/> */}
+      
         <Loading />
       </>
     );
@@ -89,7 +85,7 @@ export default function Feed({ user, handleLogout }) {
     <Grid centered>
        <Grid.Row> 
            <Grid.Column>
-          {/* <PageHeader  handleLogout={handleLogout} user={user}/> */}
+         
           </Grid.Column>
         </Grid.Row>
       <div>

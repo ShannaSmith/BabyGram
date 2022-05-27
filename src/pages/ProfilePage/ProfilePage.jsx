@@ -22,7 +22,6 @@ export default function ProfilePage() {
       setGrantedUsers(data.grantedUsers);
       setDeniedUsers(data.deniedUsers);
     } catch (err) {
-      console.log("err==>>", err);
       setError("Profile Doesn't exists, CHECK YOUR TERMINAL FOR EXPRESS!");
     }
   }
@@ -34,7 +33,6 @@ export default function ProfilePage() {
         setGrantedUsers(data.grantedUsers);
         setDeniedUsers(data.deniedUsers);
       } catch (err) {
-        console.log("err==>>", err);
         setError("Profile Doesn't exists, CHECK YOUR TERMINAL FOR EXPRESS!");
       }
     }
@@ -50,7 +48,6 @@ export default function ProfilePage() {
         const data = await userService.getProfile(username);
         setUser(() => data.user);
       } catch (err) {
-        console.log("err==>>", err);
         setError("Profile Doesn't exists, CHECK YOUR TERMINAL FOR EXPRESS!");
       }
     }
@@ -63,7 +60,6 @@ export default function ProfilePage() {
         const data = await userService.getLoggedInUser();
         setLoggedInUser(data);
       } catch (err) {
-        console.log("err==>>", err);
         setError("Profile Doesn't exists, CHECK YOUR TERMINAL FOR EXPRESS!");
       }
     }

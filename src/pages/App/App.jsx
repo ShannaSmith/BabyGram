@@ -25,7 +25,6 @@ function App() {
   }
 
   useEffect(()=>{
-    console.log(location)
      if(!user && location.pathname == '/'){
        navigate('/login')
      }

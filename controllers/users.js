@@ -75,7 +75,6 @@ async function profile(req, res) {
     const posts = await Post.find({ user: user._id }).populate("user").exec();
     res.status(200).json({ posts: posts, user: user });
   } catch (err) {
-    console.log(err);
     res.status(400).json({ err });
   }
 }
@@ -95,7 +94,6 @@ async function allUsers(req, res) {
     });
     res.send({ grantedUsers, deniedUsers });
   } catch (err) {
-    console.log(err);
     res.status(400).json({ err });
   }
 }
@@ -106,7 +104,6 @@ async function grantAccess(req, res) {
     const { userId } = req.params;
     res.send(AccessCode.create({ owner: _id, recipient: userId }));
   } catch (err) {
-    console.log("error granting access==>>", err);
     res.status(400).json({ err });
   }
 }
@@ -118,7 +115,6 @@ async function revokeAccess(req, res) {
     await AccessCode.findOneAndDelete({ owner: _id, recipient: userId });
     res.send({ message: "access revoked" });
   } catch (err) {
-    console.log("error revoking access==>>", err);
     res.status(400).json({ err });
   }
 }
@@ -129,7 +125,6 @@ async function grantedUsers(req, res) {
     const grantedUsers = await AccessCode.find({recipient: _id }).populate('owner');
     res.send(grantedUsers);
   } catch (err) {
-    console.log("error revoking access==>>", err);
     res.status(400).json({ err });
   }
 }
@@ -138,7 +133,6 @@ function getLoggedInUser(req, res) {
   try {
     res.send(req.user);
   } catch (err) {
-    console.log("error revoking access==>>", err);
     res.status(400).json({ err });
   }
 }

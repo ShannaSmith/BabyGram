@@ -21,7 +21,6 @@ export default function UserPostGallery({ user }) {
       setPosts([...data.posts]);
       setLoading(false);
     } catch (err) {
-      console.log(err.message, " this is the error");
       setError(err.message);
     }
   }
@@ -39,7 +38,6 @@ export default function UserPostGallery({ user }) {
       await postsAPI.addLike(postId);
       await getPosts();
     } catch (err) {
-      console.log(err.message, " this is the error");
       setError(err.message);
     }
   };
@@ -49,7 +47,6 @@ export default function UserPostGallery({ user }) {
       await postsAPI.removeLike(postId);
       await getPosts();
     } catch (err) {
-      console.log(err.message, " this is the error");
       setError(err.message);
     }
   };   

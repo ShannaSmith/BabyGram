@@ -28,7 +28,6 @@ export default function SignUpPage(props) {
       props.handleSignUpOrLogin();
       navigate('/')
     }catch(err){
-      console.log(err.message);
       setError(err.message)
     }
   }
@@ -84,14 +83,6 @@ export default function SignUpPage(props) {
            onChange={handleChange}
            required
          />
-         {/* <Form.Input
-           name="accessCode"
-           type="password"
-           placeholder="enter access code"
-           value={state.accessCode}
-           onChange={handleChange}
-           required
-         /> */}
          <Form.TextArea id="bio"
            label="bio"
            name="bio"

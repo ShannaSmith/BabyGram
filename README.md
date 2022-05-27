@@ -32,12 +32,12 @@
     
  ## User Stories | ERD Diagram | Wireframes 
     
- -  [Trello Board] (https://trello.com/b/mGtXskn0/baby-gram)   ⬅️ Warning: clicking this link will redirect you to Trello.com
+ 👀 [view BabyGram project planning](https://trello.com/b/mGtXskn0/baby-gram)  ⬅️ Warning: clicking this link will redirect you to Trello.com
     
  <br>
     
  # 💾 Technologies Used
- <h3 align="center">React| MongoDB | Express | Node.js | CSS | AWS S3 | HTML | JavaSCript | Atlas MongoDB | Semantic UI | Heroko | Figma</h3>
+ <h3 align="center">React| MongoDB | Express | Node.js | CSS | AWS S3 | HTML | JavaSCript | Atlas MongoDB | Semantic UI | Heroko | Figma |</h3>
    
     
  ## ⏭️ Next Steps 
